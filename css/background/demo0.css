@@ -1,0 +1,30 @@
+.other {
+	width: 200px;
+}
+.div0 {
+	width: 200px;
+	height: 200px;
+	overflow: scroll;
+	background-size: 50px;
+	background-image: url("./images/img0.png");
+
+	background-attachment: scroll;
+}
+.div1 {
+	width: 200px;
+	height: 200px;
+	overflow: scroll;
+	background-size: 50px;
+	background-image: url("./images/img0.png");
+
+	background-attachment: local;
+}
+.div2 {
+	width: 200px;
+	height: 200px;
+	overflow: scroll;
+	background-size: 50px;
+	background-image: url("./images/img0.png");
+
+	background-attachment: fixed;
+}

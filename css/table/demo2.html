@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<style>
+		body {
+			background: #ccc;
+		}
+		.main {
+			width: 400px;
+			margin: auto;
+			background: #fff;
+		}
+		table, td {
+			border: 1px solid #000;
+		}
+
+		.tb0 td {
+			width: 50%;
+		}
+
+		.tb1 td {
+			width: 1000px;
+		}
+
+		.tb2 td:nth-child(1) {
+			width: 1000px;
+		}
+
+		.tb2 td:nth-child(2) {
+			width: 2000px;
+		}
+
+		.para p {
+			width: 1000px;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="main">
+		<table class="tb0">
+			<tr>
+				<td>左边的内容少</td>
+				<td>右边的内容比左边多很多很多很多很多很多很多</td>
+			</tr>
+		</table>
+		<table class="tb1">
+			<tr>
+				<td>左边的内容少</td>
+				<td>右边的内容比左边多很多很多很多很多很多很多</td>
+			</tr>
+		</table>
+		<table class="tb2">
+			<tr>
+				<td>左边的内容少</td>
+				<td>右边的内容比左边多很多很多很多很多很多很多</td>
+			</tr>
+		</table>
+		<div class="para">
+			<p>段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落段落</p>
+		</div>
+	</div>
+</body>
+</html>

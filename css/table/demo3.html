@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<style>
+		body {
+			background: #ccc;
+		}
+		.main {
+			width: 400px;
+			margin: auto;
+			background: #fff;
+		}
+		table, td {
+			border: 1px solid #000;
+		}
+
+		.tb0, .tb1, .tb2 {
+			overflow: hidden;
+		}
+
+		.tb0 td, .tb1 td, .tb2 td {
+			overflow: hidden;
+		}
+
+		.tb1 {
+			white-space: nowrap;
+		}
+	</style>
+</head>
+<body>
+	<div class="main">
+		<table class="tb0">
+			<tr>
+				<td>左边的内容</td>
+				<td>右边的内容有个很长的图片 <img src="./images/img0.png" alt="img"></td>
+			</tr>
+		</table>
+		<table class="tb1">
+			<tr>
+				<td>左边的内容左边的内容</td>
+				<td>右边的内容右边的内容右边的内容右边的内容</td>
+			</tr>
+		</table>
+		<table class="tb2">
+			<tr>
+				<td>左边的内容</td>
+				<td>
+					<pre>
+						function wtf() {
+							console.log('WTF'); 
+						}
+					</pre>
+				</td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>

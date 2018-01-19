@@ -4,8 +4,25 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<link rel="stylesheet" href="./demo2.css" type="text/css">
 	<title>Document</title>
+	<style>
+		.div0, .div1, .div2, .div3, .div4 {
+			width: 200px;
+			height: 200px;
+		}
+
+		.div0 {
+			background-image: url("./images/img0.png"), url("./images/img1.jpg");
+		}
+
+		.div1 {
+			background-image: linear-gradient(90deg, #000 20%, #fff 20%, #000, #fff);
+		}
+
+		.div2 {
+			background-image: radial-gradient(ellipse 80px 40px at 20px 30px, #fff 0%, #000 50%, #fff 100%);
+		}
+	</style>
 </head>
 <body>
 	<div class="div0">

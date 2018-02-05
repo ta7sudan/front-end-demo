@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<style>
+		div {
+			width: 200px;
+			margin-bottom:  30px;
+			background: red;
+		}
+		.demo {
+			direction: rtl;
+		}
+		.child {
+			width: 80px;
+			display: inline-block;
+		}
+
+		.overflow {
+			white-space: nowrap;
+		}
+
+		table, td {
+			border: 1px solid #000;
+		}
+		table {
+			border-collapse: collapse;
+			direction: rtl;
+		}
+		td {
+			width: 50px;
+		}
+	</style>
+</head>
+<body>
+	<div class="demo">abc</div>
+	<div class="demo">abc def</div>
+	<div class="demo"><span>abc</span> <span>def</span></div>
+	<div class="demo"><span>abc</span> <span>def</span><span>abc</span> <span>def</span><span>abc</span> <span>def</span><span>abc</span> <span>def</span><span>abc</span> <span>def</span></div>
+	<div class="demo overflow"><span>abc</span> <span>def</span><span>abc</span> <span>def</span><span>abc</span> <span>def</span><span>abc</span> <span>def</span><span>abc</span> <span>def</span></div>
+	<div class="demo">
+		<div class="child">
+			<span>abc</span>
+			<span>def</span>
+		</div>
+		<div class="child">
+			<span>hij</span>
+			<span>lmn</span>
+		</div>
+	</div>
+	<table>
+		<tr>
+			<td>
+				<span>1</span>
+				<span>2</span>
+			</td>
+			<td>
+				<span>3</span>
+				<span>4</span>
+			</td>
+			<td>
+				<span>5</span>
+				<span>6</span>
+			</td>
+			<td>
+				<span>7</span>
+				<span>8</span>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

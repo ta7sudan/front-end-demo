@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<style>
+		.container {
+			width: 300px;
+			height: 100px;
+			background: green;
+			margin-bottom: 30px;
+			display: flex;
+		}
+
+		.item {
+			width: 50px;
+			background: orange;
+			border: 1px solid #000;
+		}
+
+		.c0 {
+			align-items: stretch;
+		}
+
+		.c1 {
+			align-items: stretch;
+		}
+		.c1 > .item {
+			height: 50px;
+			/* max-height: 50px; */
+		}
+
+		.c2 {
+			align-items: stretch;
+			flex-wrap: wrap;
+		}
+		.c2 > .item {
+			width: 60px;
+		}
+
+		.c3 {
+			width: 400px;
+			height: 200px;
+			align-items: stretch;
+			flex-wrap: wrap;
+		}
+		.c3 > .item {
+			width: 80px;
+		}
+		.c3 > .item:first-child {
+			height: 60px;
+		}
+		.c3 > .item:nth-child(4) {
+			height: 70px;
+		}
+		.c3 > .item:nth-child(5) {
+			line-height: 20px;
+		}
+
+		.c4 {
+			align-items: flex-start;
+		}
+
+		.c5 {
+			flex-wrap: wrap;
+			align-items: flex-start;
+		}
+		.c5 > .item {
+			width: 60px;
+		}
+
+		.c6 {
+			align-items: flex-end;
+		}
+
+		.c7 {
+			flex-wrap: wrap;
+			align-items: flex-end;
+		}
+		.c7 > .item {
+			width: 60px;
+		}
+
+		.c8 {
+			align-items: center;
+		}
+
+		.c9 {
+			flex-wrap: wrap;
+			align-items: center;
+		}
+		.c9 > .item {
+			width: 60px;
+		}
+
+		.c10 {
+			align-items: baseline;
+		}
+		.c10 > .item:nth-child(2) {
+			font-size: 30px;
+		}
+
+		.c11 {
+			flex-wrap: wrap;
+			align-items: baseline;
+		}
+		.c11 > .item {
+			width: 60px;
+		}
+		.c11 > .item:nth-child(3), .c11 > .item:nth-child(6) {
+			font-size: 30px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container c0">
+		<div class="item">1</div>
+		<div class="item">2</div>
+		<div class="item">3</div>
+		<div class="item">4</div>
+		<div class="item">5</div>
+	</div>
+	<div class="container c1">
+		<div class="item">1</div>
+		<div class="item">2</div>
+		<div class="item">3</div>
+		<div class="item">4</div>
+		<div class="item">5</div>
+	</div>
+	<div class="container c2">
+		<div class="item">1</div>
+		<div class="item">2</div>
+		<div class="item">3</div>
+		<div class="item">4</div>
+		<div class="item">5</div>
+	</div>
+	<div class="container c3">
+		<div class="item">height:60px</div>
+		<div class="item">height:auto</div>
+		<div class="item">height:auto</div>
+		<div class="item">height:70px</div>
+		<div class="item"><div>height:auto line-height:20px</div></div>
+	</div>
+	<div class="container c4">
+		<div class="item">1</div>
+		<div class="item">2</div>
+		<div class="item">3</div>
+		<div class="item">4</div>
+		<div class="item">5</div>
+	</div>
+	<div class="container c5">
+		<div class="item">1</div>
+		<div class="item">2</div>
+		<div class="item">3</div>
+		<div class="item">4</div>
+		<div class="item">5</div>
+	</div>
+	<div class="container c6">
+		<div class="item">1</div>
+		<div class="item">2</div>
+		<div class="item">3</div>
+		<div class="item">4</div>
+		<div class="item">5</div>
+	</div>
+	<div class="container c7">
+		<div class="item">1</div>
+		<div class="item">2</div>
+		<div class="item">3</div>
+		<div class="item">4</div>
+		<div class="item">5</div>
+	</div>
+	<div class="container c8">
+		<div class="item">1</div>
+		<div class="item">2</div>
+		<div class="item">3</div>
+		<div class="item">4</div>
+		<div class="item">5</div>
+	</div>
+	<div class="container c9">
+		<div class="item">1</div>
+		<div class="item">2</div>
+		<div class="item">3</div>
+		<div class="item">4</div>
+		<div class="item">5</div>
+	</div>
+	<div class="container c10">
+		<div class="item">1</div>
+		<div class="item">2</div>
+		<div class="item">3</div>
+		<div class="item">4</div>
+		<div class="item">5</div>
+	</div>
+	<div class="container c11">
+		<div class="item">1</div>
+		<div class="item">2</div>
+		<div class="item">3</div>
+		<div class="item">4</div>
+		<div class="item">5</div>
+		<div class="item">6</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<style>
+		.container {
+			/* width: 500px; */
+			width: 1000px;
+			height: 100px;
+			background: green;
+			display: flex;
+			margin-bottom: 20px;
+		}
+
+		.item {
+			height: 50px;
+			border: 10px solid #000;
+			background: red;
+		}
+
+		.i0 {
+			flex-basis: 80px;
+		}
+		.i1 {
+			flex-basis: 180px;
+		}
+		.i2 {
+			flex-basis: 280px;
+		}
+		.i3 {
+			flex-basis: 380px;
+		}
+
+		.i4 {
+			flex-basis: 100px;
+			border: none;
+		}
+		.i5 {
+			flex-basis: 200px;
+			border: none;
+		}
+		.i6 {
+			flex-basis: 300px;
+			border: none;
+		}
+		.i7 {
+			flex-basis: 400px;
+			flex-shrink: 2;
+			border: none;
+		}
+
+		.i8 {
+			flex-basis: 100px;
+			border: none;
+		}
+		.i9 {
+			flex-basis: 200px;
+			border: none;
+		}
+		.i10 {
+			flex-basis: 300px;
+			border: none;
+		}
+		.i11 {
+			flex-basis: 400px;
+			min-width: 200px;
+			flex-shrink: 2;
+			border: none;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="item i0">1</div>
+		<div class="item i1">2</div>
+		<div class="item i2">3</div>
+		<div class="item i3">4</div>
+	</div>
+	<div class="container">
+		<div class="item i4">1</div>
+		<div class="item i5">2</div>
+		<div class="item i6">3</div>
+		<div class="item i7">4</div>
+	</div>
+	<div class="container">
+		<div class="item i8">1</div>
+		<div class="item i9">2</div>
+		<div class="item i10">3</div>
+		<div class="item i11">4</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<style>
+		.main {
+			width: 100px;
+			height: 150px;
+			padding: 20px;
+			margin: 20px;
+			border: 10px solid #000;
+			background: green;
+			display: flex;
+		}
+		.child {
+			flex-basis: 50%;
+			height: 50%;
+			background: red;
+		}
+		.container {
+			width: 300px;
+			height: 150px;
+			background: green;
+			margin-bottom: 30px;
+			display: flex;
+		}
+
+		.item {
+			height: 120px;
+			background: red;
+			margin-right: 10px;
+			margin-bottom: 10px;
+		}
+
+		.i0 {
+			width: 30px;
+		}
+		.i1 {
+			width: 50px;
+		}
+		.i2 {
+			width: 70px;
+		}
+		.i3 {
+			width: 80px;
+		}
+		.i4 {
+			flex-basis: 30px;
+		}
+		.i5 {
+			flex-basis: 50px;
+		}
+		.i6 {
+			flex-basis: 70px;
+		}
+		.i7 {
+			flex-basis: 80px;
+		}
+
+		.c3 {
+			width: 400px;
+		}
+		.i8 {
+			width: 70px;
+			flex-basis: 80px;
+		}
+		.i9 {
+			width: 90px;
+			flex-basis: 80px;
+		}
+		.i10 {
+			min-width: 80px;
+			flex-basis: 70px;
+		}
+		.i11 {
+			min-width: 70px;
+			flex-basis: 80px;
+		}
+
+		.c4 {
+			width: 350px;
+		}
+		.i12 {
+			width: 20px;
+		}
+		.i13 {
+			flex-basis: 20px;
+		}
+		.i14 {
+			width: 20px;
+			flex-basis: 20px;
+		}
+		.i15 {
+			width: 50px;
+		}
+		.i16 {
+			flex-basis: 50px;
+		}
+		.i17 {
+			width: 30px;
+			flex-basis: 20px;
+		}
+		.i18 {
+			width: 20px;
+			flex-basis: 30px;
+		}
+
+		.i19 {
+			width: 80px;
+		}
+		.i20 {
+			width: 80px;
+		}
+		.i21 {
+			width: 80px;
+		}
+		.i22 {
+			width: 80px;
+		}
+
+		.i23 {
+			flex-basis: 80px;
+		}
+		.i24 {
+			flex-basis: 80px;
+		}
+		.i25 {
+			flex-basis: 80px;
+		}
+		.i26 {
+			flex-basis: 80px;
+		}
+
+		.i27 {
+			min-width: 80px;
+		}
+		.i28 {
+			min-width: 80px;
+		}
+		.i29 {
+			min-width: 80px;
+		}
+		.i30 {
+			min-width: 80px;
+		}
+	</style>
+</head>
+<body>
+	<div class="main">
+		<div class="child">child</div>
+	</div>
+	<div class="container c0">
+		<div class="item">aaa bbb ccc</div>
+		<div class="item">2</div>
+		<div class="item">3</div>
+		<div class="item">4</div>
+	</div>
+	<div class="container c1">
+		<div class="item i0">1</div>
+		<div class="item i1">2</div>
+		<div class="item i2">3</div>
+		<div class="item i3">4</div>
+	</div>
+	<div class="container c2">
+		<div class="item i4">1</div>
+		<div class="item i5">2</div>
+		<div class="item i6">3</div>
+		<div class="item i7">4</div>
+	</div>
+	<div class="container c3">
+		<div class="item i8">width:70px basis:80px is 80px</div>
+		<div class="item i9">width:90px basis:80px is 80px</div>
+		<div class="item i10">min-width:80px basis:70px is 80px</div>
+		<div class="item i11">min-width:70px basis:80px is 80px</div>
+	</div>
+	<div class="container c4">
+		<div class="item i12">only width 20px is 20px</div>
+		<div class="item i13">only basis 20px is 32px</div>
+		<div class="item i14">width and basis 20px is 20px</div>
+		<div class="item i15">only width 50px is 50px</div>
+		<div class="item i16">only basis 50px is 50px</div>
+		<div class="item i17">width 30px &gt; basis 20px is 30px</div>
+		<div class="item i18">width 20px &lt; basis 30px is 30px</div>
+	</div>
+	<div class="container c5">
+		<div class="item i19">only</div>
+		<div class="item i20">width</div>
+		<div class="item i21">width:80px actual:75px</div>
+		<div class="item i22">width:80px actual:75px</div>
+	</div>
+	<div class="container c6">
+		<div class="item i23">only</div>
+		<div class="item i24">basis</div>
+		<div class="item i25">basis:80px actual:75px</div>
+		<div class="item i26">basis:80px actual:75px</div>
+	</div>
+	<div class="container c7">
+		<div class="item i27">only</div>
+		<div class="item i28">min</div>
+		<div class="item i29">width</div>
+		<div class="item i30">80px</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<style>
+		.container {
+			width: 300px;
+			height: 100px;
+			background: green;
+			margin-bottom: 20px;
+			display: flex;
+		}
+		.item {
+			background: red;
+			width: 100px;
+			height: 50px;
+			border: 1px solid #000;
+		}
+		.item:nth-child(1) {
+			flex-grow: 1;
+		}
+		.item:nth-child(2) {
+			flex-grow: 2;
+		}
+
+		.child {
+			border: 1px solid #000;
+			flex-basis: 0;
+			flex-grow: 1;
+			height: 50px;
+			background: red;
+		}
+		.cld0 {
+			max-width: 50px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="item">grow 1</div>
+		<div class="item">grow 2</div>
+	</div>
+	<div class="container">
+		<div class="child cld0">child 1</div>
+		<div class="child">child 2</div>
+	</div>
+</body>
+</html>

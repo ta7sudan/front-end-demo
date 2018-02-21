@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<style>
+		.container {
+			width: 400px;
+			height: 300px;
+			background: green;
+			margin-bottom: 30px;
+			display: flex;
+			flex-wrap: wrap;
+			align-items: flex-start;
+			align-content: flex-start;
+		}
+
+		.item {
+			width: 50px;
+			background: orange;
+			border: 1px solid #000;
+		}
+		.container > .item {
+			width: 80px;
+		}
+		.container > .item:first-child {
+			height: 60px;
+		}
+		.container > .item:nth-child(4) {
+			width: 140px;
+			height: 70px;
+			font-size: 28px;
+		}
+		.container > .item:nth-child(5) {
+			line-height: 20px;
+		}
+
+		.c0 > .item:nth-child(3) {
+			align-self: auto;
+		}
+		.c1 > .item:nth-child(3) {
+			align-self: flex-end;
+		}
+		.c2 > .item:nth-child(3) {
+			align-self: center;
+		}
+		.c3 > .item:nth-child(3) {
+			align-self: baseline;
+		}
+		.c4 > .item:nth-child(3) {
+			align-self: stretch;
+		}
+	</style>
+</head>
+<body>
+	<div class="container c0">
+		<div class="item">height:60px</div>
+		<div class="item">height:auto</div>
+		<div class="item">align-self:auto</div>
+		<div class="item">height:70px font:28px</div>
+		<div class="item"><div>height:auto line-height:20px</div></div>
+	</div>
+	<div class="container c1">
+		<div class="item">height:60px</div>
+		<div class="item">height:auto</div>
+		<div class="item">align-self:flex-end</div>
+		<div class="item">height:70px font:28px</div>
+		<div class="item"><div>height:auto line-height:20px</div></div>
+	</div>
+	<div class="container c2">
+		<div class="item">height:60px</div>
+		<div class="item">height:auto</div>
+		<div class="item">align-self:center</div>
+		<div class="item">height:70px font:28px</div>
+		<div class="item"><div>height:auto line-height:20px</div></div>
+	</div>
+	<div class="container c3">
+		<div class="item">height:60px</div>
+		<div class="item">height:auto</div>
+		<div class="item">align-self:baseline</div>
+		<div class="item">height:70px font:28px</div>
+		<div class="item"><div>height:auto line-height:20px</div></div>
+	</div>
+	<div class="container c4">
+		<div class="item">height:60px</div>
+		<div class="item">height:auto</div>
+		<div class="item">align-self:stretch</div>
+		<div class="item">height:70px font:28px</div>
+		<div class="item"><div>height:auto line-height:20px</div></div>
+	</div>
+</body>
+</html>

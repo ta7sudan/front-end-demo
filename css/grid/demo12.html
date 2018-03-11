@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<style>
+		.main {
+			width: 300px;
+			background: #fff4e6;
+			border: 2px solid #f76707;
+			border-radius: 5px;
+			margin-bottom: 50px;
+			display: grid;
+		}
+
+		.item {
+			color: #d9480f;
+			background: #ffd8a8;
+			border: 2px solid #ffa94d;
+			border-radius: 5px;
+		}
+
+		.m0 {
+			width: 300px;
+			grid-template-columns: repeat(2, minmax(50px, 100px));
+			grid-gap: 10px;
+		}
+
+		.m1 {
+			width: 300px;
+			grid-template-columns: repeat(2, minmax(50px, 100px)) 100px;
+			grid-gap: 10px;
+		}
+
+		.m2 {
+			width: 300px;
+			grid-template-columns: repeat(2, minmax(50%, auto));
+			grid-gap: 10px;
+		}
+
+		.m3 {
+			width: 300px;
+			grid-template-columns: 100px minmax(100px, max-content);
+			grid-gap: 10px;
+		}
+
+		.m4 {
+			width: 300px;
+			grid-template-columns: 100px minmax(auto, min-content);
+			grid-gap: 10px;
+		}
+
+		.m5 {
+			width: 300px;
+			grid-template-columns: 100px minmax(min-content, auto);
+			grid-gap: 10px;
+		}
+
+		.m6 {
+			width: 300px;
+			grid-template-columns: repeat(3, 1fr);
+			grid-template-rows: repeat(2, minmax(40px, auto));
+		}
+	</style>
+</head>
+<body>
+	<div class="main m0">
+		<div class="item">1</div>
+		<div class="item">2</div>
+	</div>
+	<div class="main m1">
+		<div class="item">1</div>
+		<div class="item">2</div>
+	</div>
+	<div class="main m2">
+		<div class="item">test test test testtest test</div>
+		<div class="item">test test test testtest test</div>
+	</div>
+	<div class="main m3">
+		<div class="item">test test test testtest test</div>
+		<div class="item">test test test testtest test</div>
+	</div>
+	<div class="main m4">
+		<div class="item">test test test testtest test</div>
+		<div class="item">test test test testtest test</div>
+	</div>
+	<div class="main m5">
+		<div class="item">test test test testtest test</div>
+		<div class="item">test test test testtest test</div>
+	</div>
+	<div class="main m6">
+		<div class="item">1</div>
+		<div class="item">2</div>
+		<div class="item">3</div>
+		<div class="item">more content more content more content more content</div>
+	</div>
+</body>
+</html>

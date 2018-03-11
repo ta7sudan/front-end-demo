@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<style>
+		.main {
+			width: 300px;
+			background: #fff4e6;
+			border: 2px solid #f76707;
+			border-radius: 5px;
+			margin-bottom: 50px;
+			display: grid;
+		}
+
+		.item {
+			color: #d9480f;
+			background: #ffd8a8;
+			border: 2px solid #ffa94d;
+			border-radius: 5px;
+		}
+
+		.m0 {
+			grid-template-columns: repeat(5, 1fr);
+			grid-template-rows: repeat(4, 50px);
+		}
+		.m0 > .item:nth-child(2) {
+			grid-row-start: 2;
+			grid-row-end: 4;
+			grid-column-start: 2;
+			grid-column-end: 4;
+		}
+
+		.m1 {
+			grid-template-columns: repeat(5, 1fr);
+			grid-template-rows: repeat(4, 50px);
+		}
+		.m1 > .item:nth-child(2) {
+			grid-row: 2/4;
+			grid-column: 2/4;
+		}
+
+		.m2 {
+			grid-template-columns: repeat(5, 1fr);
+			grid-template-rows: repeat(4, 50px);
+		}
+		.m2 > .item:nth-child(2) {
+			grid-area: 2/2/4/4;
+		}
+
+		.m3 {
+			grid-template-columns: repeat(5, 1fr);
+			grid-template-rows: repeat(4, 50px);
+		}
+		.m3 > .item:nth-child(2) {
+			grid-row-start: 2;
+			grid-column-start: 2;
+		}
+
+		.m4 {
+			grid-template-columns: repeat(5, 1fr);
+			grid-template-rows: repeat(4, 50px);
+		}
+		.m4 > .item:nth-child(2) {
+			grid-area: -1/2/4/-1;
+		}
+
+		.m5 {
+			grid-template-columns: [first-start] 1fr [first-end second-start] 1fr [second-end third-start] 1fr [third-end];
+			grid-template-rows: [first-start] 50px [first-end second-start] 50px [second-end third-start] 50px [third-end];
+		}
+		.m5 > .item {
+			grid-area: second-start/second-start/second-end/second-end;
+		}
+
+		.m6 {
+			grid-template-columns: [col-start] 1fr [col-start] 1fr [col-start] 1fr [col-start];
+			grid-template-rows: [row-start] 50px [row-start] 50px [row-start] 50px [row-start];
+		}
+		.m6 > .item {
+			grid-area: 1/col-start/span 2/col-start 2;
+		}
+	</style>
+</head>
+<body>
+	<div class="main m0">
+		<div class="item">1</div>
+		<div class="item">2</div>
+		<div class="item">3</div>
+		<div class="item">4</div>
+	</div>
+	<div class="main m1">
+		<div class="item">1</div>
+		<div class="item">2</div>
+		<div class="item">3</div>
+		<div class="item">4</div>
+	</div>
+	<div class="main m2">
+		<div class="item">1</div>
+		<div class="item">2</div>
+		<div class="item">3</div>
+		<div class="item">4</div>
+	</div>
+	<div class="main m3">
+		<div class="item">1</div>
+		<div class="item">2</div>
+		<div class="item">3</div>
+		<div class="item">4</div>
+	</div>
+	<div class="main m4">
+		<div class="item">1</div>
+		<div class="item">2</div>
+		<div class="item">3</div>
+		<div class="item">4</div>
+	</div>
+	<div class="main m5">
+		<div class="item">1</div>
+	</div>
+	<div class="main m6">
+		<div class="item">1</div>
+	</div>
+</body>
+</html>

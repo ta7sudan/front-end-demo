@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<style>
+		.main {
+			width: 300px;
+			background: #fff4e6;
+			border: 2px solid #f76707;
+			border-radius: 5px;
+			margin-bottom: 50px;
+			display: grid;
+		}
+
+		.item {
+			color: #d9480f;
+			background: #ffd8a8;
+			border: 2px solid #ffa94d;
+			border-radius: 5px;
+		}
+
+		.m0 {
+			grid-template-columns: repeat(9, 1fr);
+			grid-auto-rows: minmax(100px, auto);
+			grid-template-areas: 
+			"hd hd hd hd hd hd hd hd hd"
+			"sd sd sd main main main main main main"
+			"ft ft ft ft ft ft ft ft ft";
+		}
+		.m0 > .header {
+			grid-area: hd;
+		}
+		.m0 > .footer {
+			grid-area: ft;
+		}
+		.m0 > .content {
+			grid-area: main;
+		}
+		.m0 > .sidebar {
+			grid-area: sd;
+		}
+
+		.m1 {
+			grid-template-columns: repeat(9, 1fr);
+			grid-auto-rows: minmax(100px, auto);
+			grid-template-areas: 
+			"hd hd hd hd hd hd hd hd hd"
+			"sd sd sd main main main main main main"
+			". . . ft ft ft ft ft ft";
+		}
+		.m1 > .header {
+			grid-area: hd;
+		}
+		.m1 > .footer {
+			grid-area: ft;
+		}
+		.m1 > .content {
+			grid-area: main;
+		}
+		.m1 > .sidebar {
+			grid-area: sd;
+		}
+
+		.m2 {
+			grid-template-columns: [main-start] 1fr [content-start] 1fr [content-end] 1fr [main-end];
+			grid-template-rows: [main-start] 50px [content-start] 50px [content-end] 50px [main-end];
+		}
+		.content {
+			grid-area: content;
+		}
+
+		.m3 {
+			grid-template-columns: repeat(9, 1fr);
+			grid-auto-rows: minmax(100px, auto);
+			grid-template-areas: 
+			"hd hd hd hd hd hd hd hd hd"
+			"sd sd sd main main main main main main"
+			"ft ft ft ft ft ft ft ft ft";
+		}
+		.m3 > .header {
+			grid-row: hd-start/hd-end;
+			grid-column: hd-start/hd-end;
+		}
+		.m3 > .sidebar {
+			grid-row: sd-start/sd-end;
+			grid-column: sd-start/sd-end;
+		}
+		.m3 > .content {
+			grid-row: main-start/main-end;
+			grid-column: main-start/main-end;
+		}
+		.m3 > .footer {
+			grid-row: ft-start/ft-end;
+			grid-column: ft-start/ft-end;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="main m0">
+		<div class="item header">header</div>
+		<div class="item sidebar">sidebar</div>
+		<div class="item content">content</div>
+		<div class="item footer">footer</div>
+	</div>
+	<div class="main m1">
+		<div class="item header">header</div>
+		<div class="item sidebar">sidebar</div>
+		<div class="item content">content</div>
+		<div class="item footer">footer</div>
+	</div>
+	<div class="main m2">
+		<div class="item content">content</div>
+	</div>
+	<div class="main m3">
+		<div class="item header">header</div>
+		<div class="item sidebar">sidebar</div>
+		<div class="item content">content</div>
+		<div class="item footer">footer</div>
+	</div>
+</body>
+</html>

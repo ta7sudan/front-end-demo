@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<style>
+		.main {
+			width: 400px;
+			height: 200px;;
+			margin: 50px;
+			padding: 50px;
+		}
+
+		.m0 {
+			clip-path: inset(110px 110px 110px 110px round 25px 20px 15px 10px/10px 8px 6px 4px);
+		}
+		.m1 {
+			clip-path: circle(10% at 50% 50%);
+		}
+		.m2 {
+			clip-path: ellipse(20% 10% at 50% 50%);
+		}
+		.m3 {
+			clip-path: polygon(60% 20%, 30% 40%, 50% 60%);
+		}
+	</style>
+	<script>
+		window.onload = function () {
+			var body = document.body;
+			var main = document.getElementsByClassName('main')[0];
+			body.addEventListener('click', function (e) {
+				if (~~e.target.className.indexOf('main')) {
+					console.log('test');
+				}
+			});
+		};
+	</script>
+</head>
+<body>
+	<div class="main m0"><img src="./images/img.jpg" alt="sicp" class="sicp"></div>
+	<div class="main m1"><img src="./images/img.jpg" alt="sicp" class="sicp"></div>
+	<div class="main m2"><img src="./images/img.jpg" alt="sicp" class="sicp"></div>
+	<div class="main m3"><img src="./images/img.jpg" alt="sicp" class="sicp"></div>
+</body>
+</html>

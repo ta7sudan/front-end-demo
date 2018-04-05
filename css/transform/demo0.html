@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<style>
+		.main {
+			width: 200px;
+			height: 200px;
+			border: 1px solid #000;
+			margin: 100px;
+		}
+		.cube {
+			width: 100px;
+			height: 100px;
+			background: #ffd8a8;
+		}
+		.c0 {
+			transform: rotate(45deg);
+		}
+		.c1 {
+			transform: matrix(0.707107, 0.707107, -0.707107, 0.707107, 50, -20.710678);
+		}
+		.c2 {
+			transform: matrix(0.707107, 0.707107, -0.707107, 0.707107, 0, 0);
+		}
+		.c3 {
+			transform: rotate(45deg);
+			transform-origin: 0 0;
+		}
+		.c4 {
+			transform: matrix(0.707107, 0.707107, -0.707107, 0.707107, -50, 20.710678);
+		}
+	</style>
+</head>
+<body>
+	<div class="main">
+		<div class="cube c0"></div>
+	</div>
+	<div class="main">
+		<div class="cube c1"></div>
+	</div>
+	<div class="main">
+		<div class="cube c2"></div>
+	</div>
+	<div class="main">
+		<div class="cube c3"></div>
+	</div>
+	<div class="main">
+		<div class="cube c4"></div>
+	</div>
+</body>
+</html>

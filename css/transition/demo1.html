@@ -42,6 +42,12 @@
 				console.log(e.propertyName);
 				console.log(e.elapsedTime);
 			});
+			cube.addEventListener('transitioncancel', function (e) {
+				console.log('****************');
+				console.log('cancel');
+				console.log(e.propertyName);
+				console.log(e.elapsedTime);
+			});
 		};
 	</script>
 </head>

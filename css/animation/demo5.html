@@ -31,16 +31,12 @@
 	<script>
 		function getPlay(elem, animationClass) {
 			return function (e) {
-				var classNames = elem.className.split(/\s+/), index;
-				if (~(index = classNames.indexOf(animationClass))) {
-					classNames.splice(index, 1);
-					elem.className = classNames.join(' ');
+				elem.classList.remove(animationClass);
+				requestAnimationFrame(function (time) {
 					requestAnimationFrame(function (time) {
-						requestAnimationFrame(function (time) {
-							elem.className = elem.className + ' ' + animationClass;
-						});
+						elem.classList.add(animationClass);
 					});
-				}
+				});
 			};
 		}
 		window.onload = function () {

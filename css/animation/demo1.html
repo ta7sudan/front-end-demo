@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<style>
+		.cube {
+			width: 100px;
+			height: 100px;
+			background: #fc3;
+			border: 2px solid #555;
+			margin: 100px;
+		}
+		.c0 {
+			animation: a0 3s cubic-bezier(0.24, -0.87, 0.34, 1.68);
+			animation-iteration-count: infinite;
+		}
+		@keyframes a0 {
+			0% {
+				transform: translate3d(0, 0, 0);
+			}
+			50% {
+				transform: translate3d(150px, 0, 0) rotate(90deg);
+			}
+			100% {
+				transform: translate3d(300px, 0, 0) rotate(-90deg);
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="cube c0"></div>
+</body>
+</html>

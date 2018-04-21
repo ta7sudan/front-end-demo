@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<script>
+		/**
+		 * from https://developers.google.com/web/fundamentals/performance/user-centric-performance-metrics
+		 */
+		(function detectLongFrame(lastFrameTime) {
+			requestAnimationFrame(function () {
+				var currentFrameTime = Date.now();
+				if (currentFrameTime - lastFrameTime > 50) {
+					console.log('so long');
+				}
+				detectLongFrame(currentFrameTime);
+			});
+		}(Date.now()));
+	</script>
+	<style>
+		.main {
+			width: 100px;
+			height: 100px;
+			background: red;
+			animation: move 2s ease infinite both alternate;
+		}
+		@keyframes move {
+			from {
+				transform: translate3d(0, 0, 0);
+			}
+			to {
+				transform: translate3d(300px, 0, 0);
+			}
+		}
+
+	</style>
+</head>
+<body>
+	<div class="main"></div>
+</body>
+</html>

@@ -4,7 +4,9 @@
   "description": "Demo of Javascript, CSS and HTML",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "browser-loading": "./js/browser-loading/start.sh",
+    "preload": "http-server -p 80 js/preload"
   },
   "repository": {
     "type": "git",
@@ -18,5 +20,9 @@
   "bugs": {
     "url": "https://github.com/ta7sudan/front-end-demo/issues"
   },
-  "homepage": "https://github.com/ta7sudan/front-end-demo#readme"
+  "homepage": "https://github.com/ta7sudan/front-end-demo#readme",
+  "devDependencies": {
+    "http-server": "^0.11.1",
+    "oock": "^1.0.13"
+  }
 }

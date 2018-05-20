@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<script>
+		document.addEventListener('readystatechange', function (e) {
+			if (document.readyState === 'interactive') {
+				console.log('doc interactive');
+			} else if (document.readyState === 'complete') {
+				console.log('doc complete');
+			}
+		});
+		window.addEventListener('DOMContentLoaded', function (e) {
+			console.log('DOMContentLoaded');
+		});
+		window.addEventListener('load', function (e) {
+			console.log('window onload');
+		});
+	</script>
+</head>
+<body>
+	<script src="resources/load4.js"></script>
+	<script src="http://127.0.0.1:3000/js2-delay-3000"></script>
+	<!-- <script src="http://127.0.0.1:3000/js3-delay-5000"></script> -->
+
+</body>
+</html>

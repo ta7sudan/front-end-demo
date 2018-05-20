@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "browser-loading": "./js/browser-loading/start.sh",
-    "preload": "http-server -p 80 js/preload"
+    "preload": "http-server -p 80 js/preload",
+    "script-loading": "./js/script-loading/start.sh"
   },
   "repository": {
     "type": "git",

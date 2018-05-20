@@ -1,0 +1,10 @@
+console.log('start load');
+var js0 = document.createElement('script');
+js0.src = 'http://127.0.0.1:3000/js0-delay-3000';
+js0.defer = true;
+var js1 = document.createElement('script');
+js1.src = 'http://127.0.0.1:3000/js1-delay-4000';
+js1.defer = true;
+document.body.insertBefore(js1, document.currentScript);
+document.body.insertBefore(js0, document.currentScript);
+console.log('end load');

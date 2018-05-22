@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<style>
+		.cube {
+			width: 50px;
+			height: 50px;
+			background: #ff5;
+		}
+		.move {
+			animation: move 5s ease;
+		}
+		@keyframes move {
+			from {
+				transform: translate3d(0, 0, 0);
+			}
+			to {
+				transform: translate3d(100px, 0, 0);
+			}
+		}
+	</style>
+	<script>
+		function getPlay(elem, animationClass) {
+			return function (e) {
+				elem.classList.remove(animationClass);
+				requestAnimationFrame(function (time) {
+					requestAnimationFrame(function (time) {
+						elem.classList.add(animationClass);
+					});
+				});
+			};
+		}
+		window.addEventListener('DOMContentLoaded', function () {
+			var btn = document.getElementById('btn');
+			var cube = document.getElementsByClassName('cube')[0];
+			btn.addEventListener('click', getPlay(cube, 'move'));
+		});
+	</script>
+</head>
+<body>
+	<div class="cube"></div>
+	<button id="btn">Replay</button>
+</body>
+</html>

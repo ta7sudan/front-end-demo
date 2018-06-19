@@ -6,8 +6,7 @@ if (!Function.prototype.bind) {
 			// internal IsCallable function
 			throw new TypeError('Function.prototype.bind - what is trying to be bound is not callable');
 		}
-    var aArgs = (arguments.length === 1 ? [arguments[0]] : Array.apply(null, arguments)),
-			nop = aArgs.shift(),
+    var aArgs = (arguments.length === 1 ? [arguments[0]] : Array.apply(null, arguments)).slice(1),
 			fToBind = this,
 			fNOP    = function() {},
 			fBound  = function() {

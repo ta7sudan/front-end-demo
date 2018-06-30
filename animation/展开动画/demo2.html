@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<style>
+		#wrapper {
+			width: 300px;
+			border: 1px solid blue;
+			overflow: hidden;
+		}
+		#main {
+			transform: translateZ(0);
+			transition: all 0.5s ease;
+		}
+		.shrink-wrapper {
+			height: 200px;
+		}
+		.shrink {
+			clip-path: inset(0 0 400px 0);
+		}
+		.stretch {
+			clip-path: inset(0 0 0 0);
+		}
+
+
+		#footer {
+			border: 1px solid green;
+		}
+
+	</style>
+
+</head>
+<body>
+	<button id="btn">click</button>
+	<div id="wrapper" class="shrink-wrapper">
+		<div id="main" class="shrink">
+			<p>test test test test test test test</p>
+			<p>test test test test test test test</p>
+			<p>test test test test test test test</p>
+			<p>test test test test test test test</p>
+			<p>test test test test test test test</p>
+			<p>test test test test test test test</p>
+			<p>test test test test test test test</p>
+			<p>test test test test test test test</p>
+			<p>test test test test test test test</p>
+			<p>test test test test test test test</p>
+			<p>test test test test test test test</p>
+			<p>test test test test test test test</p>
+			<p>test test test test test test test</p>
+			<p>test test test test test test test</p>
+			<p>test test test test test test test</p>
+			<p>test test test test test test test</p>
+			<p>test test test test test test test</p>
+			<p>test test test test test test test</p>
+			<p>test test test test test test test</p>
+		</div>
+	</div>
+	<div id="footer">footer</div>
+	<script>
+		var btn = document.getElementById('btn');
+		var main = document.getElementById('main');
+		var wrapper = document.getElementById('wrapper');
+		var shrink = true;
+		btn.addEventListener('click', e => {
+			if (shrink) {
+				wrapper.classList.remove('shrink-wrapper');
+				main.classList.add('stretch');
+				main.classList.remove('shrink');
+				shrink = false;
+			} else {
+				wrapper.classList.add('shrink-wrapper');
+				main.classList.add('shrink');
+				main.classList.remove('stretch');
+				shrink = true;
+			}
+		});
+	</script>
+</body>
+</html>

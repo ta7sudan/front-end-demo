@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<style>
+		.container {
+			display: flex;
+		}
+		.aside {
+			text-align: right;
+			background: red;
+			height: 50px;
+			flex-basis: 0;
+			flex-grow: 2;
+		}
+		.main {
+			background: blue;
+			height: 50px;
+			flex-basis: 0;
+			flex-grow: 1;
+			transition: flex 0.2s ease;
+			transform: translateZ(0);
+			position: relative;
+		}
+		.main:hover {
+			flex-grow: 4;
+		}
+		.sub {
+			width: 100%;
+			height: 200px;
+			background: green;
+			visibility: hidden;
+			transform: translate3d(0, -110%, 0);
+			transition: transform 0.2s ease, visibility 0.2s ease;
+			position: absolute;
+			z-index: -1;
+		}
+		.main:hover > .sub {
+			visibility: visible;
+			transform: translate3d(0, 0, 0);
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="aside">test test test</div>
+		<div class="main">
+			<p>test test test test</p>
+			<div class="sub">test test test</div>
+		</div>
+	</div>
+</body>
+</html>

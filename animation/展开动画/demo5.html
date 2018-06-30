@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<style>
+		#container {
+			width: 300px;
+			display: flex;
+			flex-direction: column;
+			position: fixed;
+			top: 0;
+			bottom: 0;
+			left: 0;
+		}
+		#main {
+			width: 100%;
+			border: 1px solid blue;
+			flex-basis: 200px;
+			flex-grow: 0;
+			overflow: hidden;
+			transform: translateZ(0);
+			transition: flex 0.3s ease;
+		}
+		#main:hover {
+			flex-grow: 1;
+		}
+		#footer {
+			border: 1px solid green;
+		}
+	</style>
+</head>
+<body>
+	<div id="container">
+		<div id="main">
+			<p>test test test test test test</p>
+			<p>test test test test test test</p>
+			<p>test test test test test test</p>
+			<p>test test test test test test</p>
+			<p>test test test test test test</p>
+			<p>test test test test test test</p>
+			<p>test test test test test test</p>
+			<p>test test test test test test</p>
+			<p>test test test test test test</p>
+			<p>test test test test test test</p>
+			<p>test test test test test test</p>
+			<p>test test test test test test</p>
+			<p>test test test test test test</p>
+			<p>test test test test test test</p>
+			<p>test test test test test test</p>
+			<p>test test test test test test</p>
+			<p>test test test test test test</p>
+			<p>test test test test test test</p>
+			<p>test test test test test test</p>
+		</div>
+		<div id="footer">footer</div>
+	</div>
+</body>
+</html>

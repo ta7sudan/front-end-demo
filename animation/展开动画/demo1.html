@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<style>
+		#main {
+			width: 300px;
+			border: 1px solid blue;
+			transform: translateZ(0);
+			overflow: hidden;
+		}
+		.shrink {
+			max-height: 200px!important;
+			/* transition 写在这里是为了尽快取消 transition */
+			transition: all 0.5s ease;
+		}
+		.stretch {
+			max-height: 800px!important;
+			transition: all 0.5s ease;
+		}
+
+
+		#footer {
+			border: 1px solid green;
+		}
+
+	</style>
+
+</head>
+<body>
+	<button id="btn">click</button>
+	<div id="main" class="shrink">
+		<p>test test test test test test test</p>
+		<p>test test test test test test test</p>
+		<p>test test test test test test test</p>
+		<p>test test test test test test test</p>
+		<p>test test test test test test test</p>
+		<p>test test test test test test test</p>
+		<p>test test test test test test test</p>
+		<p>test test test test test test test</p>
+		<p>test test test test test test test</p>
+		<p>test test test test test test test</p>
+		<p>test test test test test test test</p>
+		<p>test test test test test test test</p>
+		<p>test test test test test test test</p>
+		<p>test test test test test test test</p>
+		<p>test test test test test test test</p>
+		<p>test test test test test test test</p>
+		<p>test test test test test test test</p>
+		<p>test test test test test test test</p>
+		<p>test test test test test test test</p>
+	</div>
+	<div id="footer">footer</div>
+	<script>
+		var btn = document.getElementById('btn');
+		var main = document.getElementById('main');
+		var shrink = true;
+		btn.addEventListener('click', e => {
+			if (shrink) {
+				main.classList.add('stretch');
+				main.classList.remove('shrink');
+				shrink = false;
+			} else {
+				main.classList.add('shrink');
+				main.classList.remove('stretch');
+				shrink = true;
+			}
+		});
+		main.addEventListener('transitionend', e => {
+			if (!shrink) {
+				var maxHeight = main.offsetHeight;
+				main.style.maxHeight = maxHeight + 'px';
+				main.classList.remove('stretch');
+			}
+		});
+	</script>
+</body>
+</html>

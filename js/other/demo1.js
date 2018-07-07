@@ -1,16 +1,23 @@
 // 如果只是需要简单地模拟setInterval, 这样就足够了, 缺点是不能clear掉,
-// 多了一个this绑定参数, 不支持字符串参数, 没有返回值, 和setInterval行为不完全一致
-function setIntv(fn, interval, oThis) {
-	'use strict';
+// 不支持字符串参数, 没有返回值, 和setInterval行为不完全一致
+function setIntv(fn, interval, ...args) {
+	// 这里不能用严格模式
+	// 'use strict';
 	if (typeof fn !== 'function') {
 		throw new Error('callback is not a function.');
 	}
 	const cb = function () {
-		fn.call(oThis);
+		// 这里用apply虽然会改变this, 不过不会改变bind函数的this
+		// 而如果是其他对象的方法, 用户应当知道对象方法被作为callback被调用的后果
+		// fn.apply(null, args);
+		// 而用...更好
+		// 当然这里args也可以不通过闭包去拿, 而是通过给cb加参数, 用setTimeout的后面的
+		// 参数, 只不过有些环境不支持, 这种情况就必须通过apply了
+		fn(...args);
 		// 这里不建议使用下面的setTimeout, 会导致cb和setIntv之间产生循环引用
 		// 虽然现在循环引用已经不会产生内存泄漏, 不过个人觉得还是尽量避免
 		// 但是话又说回来, 如果用setIntv的话, 每次执行都会新创建一个cb, 也是有代价
-		setIntv(fn, interval, oThis);
+		setIntv(fn, interval, ...args);
 		// setTimeout(cb, interval);
 	};
 	setTimeout(cb, interval);
@@ -23,7 +30,7 @@ const {setIntv, clearIntv} = function () {
 	const idMap = {};
 	let idOffset = Date.now();
 	return {
-		setIntv: function setIv(fn, interval) {
+		setIntv: function setIv(fn, interval, ...args) {
 			if (typeof fn !== 'function') {
 				throw new Error('callback is not a function.');
 			}
@@ -32,7 +39,7 @@ const {setIntv, clearIntv} = function () {
 			// 因为1ms对于CPU来说还是太长, 这样可以确保不会有相同时间戳出现
 			const id = idOffset++;
 			const cb = function () {
-				fn();
+				fn(...args);
 				// 这里fn中可能clear掉, 此时不应该继续执行定时, 所以我们需要根据是否存在
 				// id来决定是否需要继续定时
 				if (typeof idMap[id] !== 'undefined') {
@@ -51,3 +58,24 @@ const {setIntv, clearIntv} = function () {
 		}
 	};
 }();
+
+
+function setIntv(fn, interval, ...args) {
+	if (typeof fn !== 'function') {
+		throw new Error('callback is not a function.');
+	}
+	const handler = {},
+				cb = function () {
+					fn(...args);
+					if (typeof handler.id !== 'undefined') {
+						handler.id = setTimeout(cb, interval);
+					}
+				};
+	handler.id = setTimeout(cb, interval);
+	return handler;
+}
+
+function clearIntv(handler) {
+	clearTimeout(handler.id);
+	delete handler.id;
+}

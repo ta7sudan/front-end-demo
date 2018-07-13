@@ -51,3 +51,29 @@ function lazyIterate(arr, cb, intv, end, chunkSize) {
 	}
 	setTimeout(run);
 }
+
+/**
+ * Duff 装置
+ */
+var data = Array.from({length: 100}, (v, k) => k),
+		process = function (val) {
+			console.log(val)
+		};
+var iterCount = Math.floor(data.length / 8),
+		left = data.length % 8,
+		i = 0;
+if (left > 0) {
+	do {
+		process(data[i++]);
+	} while (--left);
+}
+do {
+	process(data[i++]);
+	process(data[i++]);
+	process(data[i++]);
+	process(data[i++]);
+	process(data[i++]);
+	process(data[i++]);
+	process(data[i++]);
+	process(data[i++]);
+} while (--iterCount);

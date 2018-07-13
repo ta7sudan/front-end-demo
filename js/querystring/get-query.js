@@ -1,3 +1,4 @@
+// 注意不支持数组
 function getQueryString() {
 	var qs = location.search.slice(1), // search为空串也OK
 			args = {},

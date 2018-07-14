@@ -1,0 +1,2 @@
+var rAF = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+var clearRAF = window.cancelAnimationFrame || window.mozCancelAnimationFrame;

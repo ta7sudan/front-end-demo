@@ -14,7 +14,6 @@ var Cookie = function () {
 		}
 		// 通常来说数组中第一个值会是当前path或离当前页path最近的path的cookie
 		return rst.length ? rst.length === 1 ? rst[0] : rst : null;
-
 	}
 	function set(key, value, expires, path, domain, secure) {
 		var k = encodeURIComponent(key.replace(/%(23|24|26|2B|3A|3C|3E|3D|2F|3F|40|5B|5D|5E|60|7B|7D|7C)/g, decodeURIComponent)),
@@ -34,7 +33,6 @@ var Cookie = function () {
 			text += '; secure';
 		}
 		document.cookie = text;
-
 	}
 	return {
 		get,

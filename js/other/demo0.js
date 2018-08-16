@@ -98,3 +98,19 @@ function hasRegExpU() {
 		return false;
 	}
 }
+
+// 把一个多参函数变成一个单数组参数的函数
+var add = Function.apply.bind(function (x, y) {
+	return x + y;
+}, null);
+add([1, 2]);
+
+// 检测是否是async函数
+function isAsyncFunction(fn) {
+	return fn[Symbol.toStringTag] === 'AsyncFunction';
+}
+
+// 检测是否是生成器函数
+function isGenerator(fn) {
+	return fn[Symbol.toStringTag] === 'GeneratorFunction';
+}

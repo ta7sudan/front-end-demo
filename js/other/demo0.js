@@ -114,3 +114,8 @@ function isAsyncFunction(fn) {
 function isGenerator(fn) {
 	return fn[Symbol.toStringTag] === 'GeneratorFunction';
 }
+
+// cb接受一个值, 返回一个Promise, 不过现在有async/await了, 这东西意义不大
+function each(arr, cb) {
+	return arr.reduce((rst, cur) => rst.then(() => cb(cur)), Promise.resolve());
+}

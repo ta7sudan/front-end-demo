@@ -119,3 +119,83 @@ function isGenerator(fn) {
 function each(arr, cb) {
 	return arr.reduce((rst, cur) => rst.then(() => cb(cur)), Promise.resolve());
 }
+
+// 蹦床
+var factorial = function () {
+	function trampoline(res) {
+		while (typeof res === 'function') {
+			res = res();
+		}
+		return res;
+	}
+
+	function _factorial(n, m) {
+		if (n < 2) {
+			return m;
+		} else {
+			return function partial() {
+				return _factorial(n - 1, m * n);
+			};
+		}
+	}
+
+	return function (n) {
+		return trampoline(_factorial(n, 1));
+	}
+}();
+
+// 简单的range工具函数
+function range(...args) {
+	let len, start = 0, step = 1;
+	if (args.length === 1) {
+		len = args[0];
+	} else if (args.length === 2) {
+		start = args[0];
+		len = args[1];
+	} else {
+		start = args[0];
+		len = args[1];
+		step = args[2];
+	}
+	return Array.from({length: len}, (v, k) => step * k + start);
+}
+
+// 封装随机数函数
+function rand(min, max) {
+	return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+// 随机生成指定长度的16进制字符串
+function randHex(len) {
+	return (~~(Math.random() * (1 << (4 * len)))).toString(16);
+}
+
+// 随机生成指定长度的数字字母字符串, 思路是可以, 不过长度不能太长, 否则超出数字范围, 只能简单场景用用
+function randStr(len) {
+	return Math.floor(Math.random() * Math.pow(36, len)).toString(36).slice(-len);
+}
+
+
+// String.prototype.repeat()的不完全替代品, 缺点是要创建一个稀疏数组, 简单场景可以用用
+function repeat(str, n) {
+	return new Array(n + 1).join(str);
+}
+
+// 生成指定长度的数字前补0的字符串
+function fillZero(num, len) {
+	return (Array(len).join('0') + num).slice(-len);
+}
+
+// 得到一个将array-like转数组的函数, 不过现在已经有Array.from了
+var toArray = Function.call.bind(Array.prototype.slice);
+toArray(arguments);
+
+
+// 对字符串做HTML转义...只适用于浏览器环境
+function escapeHTML (s) {
+    return new Option(s).innerHTML;
+}
+
+// 浅复制数组
+var newArr = [1, 2, 3].slice();
+var newArr = [1, 2, 3].concat();

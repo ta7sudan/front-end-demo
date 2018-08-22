@@ -12,7 +12,7 @@ var Aspect = function () {
 			throw new TypeError('fn is not a function.');
 		}
 		var beforeList = beforeListMap.get(this);
-		beforeList.push(fn.bind(thisArg));
+		beforeList.push(fn.apply.bind(fn, thisArg));
 		return this;
 	}
 
@@ -21,7 +21,7 @@ var Aspect = function () {
 			throw new TypeError('fn is not a function.');
 		}
 		var afterList = afterListMap.get(this);
-		afterList.push(fn.bind(thisArg));
+		afterList.push(fn.apply.bind(fn, thisArg));
 		return this;
 	}
 
@@ -36,13 +36,13 @@ var Aspect = function () {
 				afterList = afterListMap.get(f);
 
 			while (beforeList.length) {
-				beforeList.shift().apply(null, args);
+				beforeList.shift()(args);
 			}
 
 			var rst = fn.apply(thisArg, args);
 
 			while (afterList.length) {
-				afterList.shift().apply(null, args);
+				afterList.shift()(args);
 			}
 
 			return rst;

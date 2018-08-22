@@ -8,7 +8,7 @@ var Aspect = function () {
 		if (typeof fn !== 'function') {
 			throw new TypeError('fn is not a function.');
 		}
-		this.__privateBeforeList.push(fn.bind(thisArg));
+		this.__privateBeforeList.push(fn.apply.bind(fn, thisArg));
 		return this;
 	}
 
@@ -16,7 +16,7 @@ var Aspect = function () {
 		if (typeof fn !== 'function') {
 			throw new TypeError('fn is not a function.');
 		}
-		this.__privateAfterList.push(fn.bind(thisArg));
+		this.__privateAfterList.push(fn.apply.bind(fn, thisArg));
 		return this;
 	}
 
@@ -30,13 +30,13 @@ var Aspect = function () {
 				beforeList = f.__privateBeforeList,
 				afterList = f.__privateAfterList;
 			while (beforeList.length) {
-				beforeList.shift().apply(null, args);
+				beforeList.shift()(args);
 			}
 
 			var rst = fn.apply(thisArg, args);
 
 			while (afterList.length) {
-				afterList.shift().apply(null, args);
+				afterList.shift()(args);
 			}
 
 			return rst;

@@ -199,3 +199,8 @@ function escapeHTML (s) {
 // 浅复制数组
 var newArr = [1, 2, 3].slice();
 var newArr = [1, 2, 3].concat();
+
+// uncurry
+function uncurry(fn) {
+	return Function.call.bind(fn);
+}

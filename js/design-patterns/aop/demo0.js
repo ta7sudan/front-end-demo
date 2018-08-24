@@ -28,15 +28,19 @@ var Aspect = function () {
 		var f = function () {
 			var args = toArray(arguments),
 				beforeList = f.__privateBeforeList,
-				afterList = f.__privateAfterList;
-			while (beforeList.length) {
-				beforeList.shift()(args);
+				afterList = f.__privateAfterList,
+				bLen = beforeList.length,
+				aLen = afterList.length,
+				i;
+
+			for (i = 0; i < bLen; ++i) {
+				beforeList[i](args);
 			}
 
 			var rst = fn.apply(thisArg, args);
 
-			while (afterList.length) {
-				afterList.shift()(args);
+			for (i = 0; i < aLen; ++i) {
+				afterList[i](args);
 			}
 
 			return rst;

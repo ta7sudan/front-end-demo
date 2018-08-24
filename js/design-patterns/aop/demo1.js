@@ -32,17 +32,20 @@ var Aspect = function () {
 
 		var f = function () {
 			var args = toArray(arguments),
-				beforeList = beforeListMap.get(f);
-				afterList = afterListMap.get(f);
+				beforeList = beforeListMap.get(f),
+				afterList = afterListMap.get(f),
+				bLen = beforeList.length,
+				aLen = afterList.length,
+				i;
 
-			while (beforeList.length) {
-				beforeList.shift()(args);
+			for (i = 0; i < bLen; ++i) {
+				beforeList[i](args);
 			}
 
 			var rst = fn.apply(thisArg, args);
 
-			while (afterList.length) {
-				afterList.shift()(args);
+			for (i = 0; i < aLen; ++i) {
+				afterList[i](args);
 			}
 
 			return rst;

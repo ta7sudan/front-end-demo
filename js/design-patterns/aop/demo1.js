@@ -1,28 +1,35 @@
 var Aspect = function () {
-	var beforeListMap = new WeakMap(),
-		afterListMap = new WeakMap();
+	var listMap = {
+			before: new WeakMap(),
+			after: new WeakMap()
+		},
+		apply = Reflect.apply;
 	
 	function toArray(args) {
 		// from https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments
-		return args.length === 1 ? [args[0]] : Array.apply(null, args);
+		return args.length === 1 ? [args[0]] : apply(Array, null, args);
 	}
 
-	function before(fn, thisArg) {
-		if (typeof fn !== 'function') {
-			throw new TypeError('fn is not a function.');
-		}
-		var beforeList = beforeListMap.get(this);
-		beforeList.push(fn.apply.bind(fn, thisArg));
-		return this;
+	function beforeAfter(type) {
+		return function (fn, thisArg) {
+			if (typeof fn !== 'function') {
+				throw new TypeError('fn is not a function.');
+			}
+			var list = listMap[type].get(this);
+			list.push(apply.bind(Reflect, fn, thisArg));
+			return this;
+		};
 	}
 
-	function after(fn, thisArg) {
-		if (typeof fn !== 'function') {
-			throw new TypeError('fn is not a function.');
+	function execEach(list, args) {
+		var next = true;
+		for (var i = 0, len = list.length; i < len; ++i) {
+			if (!next) {
+				break;
+			}
+			next = list[i](args) !== false;
 		}
-		var afterList = afterListMap.get(this);
-		afterList.push(fn.apply.bind(fn, thisArg));
-		return this;
+		return next;
 	}
 
 	function _Aspect(fn, thisArg) {
@@ -32,30 +39,27 @@ var Aspect = function () {
 
 		var f = function () {
 			var args = toArray(arguments),
-				beforeList = beforeListMap.get(f),
-				afterList = afterListMap.get(f),
-				bLen = beforeList.length,
-				aLen = afterList.length,
-				i;
+				beforeList = listMap.before.get(f),
+				afterList = listMap.after.get(f),
+				next,
+				rst;
 
-			for (i = 0; i < bLen; ++i) {
-				beforeList[i](args);
-			}
+			next = execEach(beforeList, args);
 
-			var rst = fn.apply(thisArg, args);
+			if (!next) return;
 
-			for (i = 0; i < aLen; ++i) {
-				afterList[i](args);
-			}
+			rst = apply(fn, thisArg, args);
+
+			execEach(afterList, args);
 
 			return rst;
 		};
 
-		f.before = before.bind(f);
-		f.after = after.bind(f);
+		f.before = beforeAfter('before').bind(f);
+		f.after = beforeAfter('after').bind(f);
 
-		beforeListMap.set(f, []);
-		afterListMap.set(f, []);
+		listMap.before.set(f, []);
+		listMap.after.set(f, []);
 
 		return f;
 	}

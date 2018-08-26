@@ -4,20 +4,25 @@ var Aspect = function () {
 		return args.length === 1 ? [args[0]] : Array.apply(null, args);
 	}
 
-	function before(fn, thisArg) {
-		if (typeof fn !== 'function') {
-			throw new TypeError('fn is not a function.');
-		}
-		this.__privateBeforeList.push(fn.apply.bind(fn, thisArg));
-		return this;
+	function beforeAfter(type) {
+		return function (fn, thisArg) {
+			if (typeof fn !== 'function') {
+				throw new TypeError('fn is not a function.');
+			}
+			this._list[type].push(fn.apply.bind(fn, thisArg));
+			return this;
+		};
 	}
 
-	function after(fn, thisArg) {
-		if (typeof fn !== 'function') {
-			throw new TypeError('fn is not a function.');
+	function execEach(list, args) {
+		var next = true;
+		for (var i = 0, len = list.length; i < len; ++i) {
+			if (!next) {
+				break;
+			}
+			next = list[i](args) !== false;
 		}
-		this.__privateAfterList.push(fn.apply.bind(fn, thisArg));
-		return this;
+		return next;
 	}
 
 	function _Aspect(fn, thisArg) {
@@ -27,36 +32,31 @@ var Aspect = function () {
 
 		var f = function () {
 			var args = toArray(arguments),
-				beforeList = f.__privateBeforeList,
-				afterList = f.__privateAfterList,
-				bLen = beforeList.length,
-				aLen = afterList.length,
-				i;
+				beforeList = f._list.before,
+				afterList = f._list.after,
+				next,
+				rst;
 
-			for (i = 0; i < bLen; ++i) {
-				beforeList[i](args);
-			}
+			next = execEach(beforeList, args);
 
-			var rst = fn.apply(thisArg, args);
+			if (!next) return;
 
-			for (i = 0; i < aLen; ++i) {
-				afterList[i](args);
-			}
+			rst = fn.apply(thisArg, args);
+
+			execEach(afterList, args);
 
 			return rst;
 		};
 
-		f.before = before.bind(f);
-		f.after = after.bind(f);
+		f.before = beforeAfter('before').bind(f);
+		f.after = beforeAfter('after').bind(f);
 
 		Object.defineProperties(f, {
-			'__privateBeforeList': {
-				value: [],
-				writable: true,
-				enumerable: false
-			},
-			'__privateAfterList': {
-				value: [],
+			'_list': {
+				value: {
+					before: [],
+					after: []
+				},
 				writable: true,
 				enumerable: false
 			}

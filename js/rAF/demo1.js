@@ -15,7 +15,7 @@ var {rAF, cancelRAF} = function () {
 	}
 
 	return {
-		rAF: window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame || polyfillRAF,
+		rAF: window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame || rAF,
 		cancelRAF: window.cancelAnimationFrame || window.mozCancelAnimationFrame || clearTimeout
 	};
 }();

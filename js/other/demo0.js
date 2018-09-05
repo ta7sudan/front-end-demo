@@ -204,3 +204,22 @@ var newArr = [1, 2, 3].concat();
 function uncurry(fn) {
 	return Function.call.bind(fn);
 }
+
+// 给数组降一维, 简单场景不考虑时间空间开销的时候可用
+var reduceDimension = Function.apply.bind(Array.prototype.concat);
+reduceDimension([], [[1, 2, 3], [4, 5, 6]]);
+
+// 我们知道合并数组用concat, 但这是创建一个新数组而不改变原有数组
+var newArr = [1, 2, 3].concat([4, 5, 6]);
+// 如果希望不创建新数组
+arr0.push.apply(arr0, arr1);
+
+// 创建一个100个元素的密集数组
+Array.from({length:100})
+Array.apply(null,{length:100})
+
+// 生成100个值从0-99的元素
+Object.keys(Array.apply(null,{length:100}))
+Array.from(Array(100).keys()) 
+var a = [...Array(100).keys()];
+Array.from({ length: 100 }, (v, k) => k)

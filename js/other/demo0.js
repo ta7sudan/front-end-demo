@@ -223,3 +223,19 @@ Object.keys(Array.apply(null,{length:100}))
 Array.from(Array(100).keys()) 
 var a = [...Array(100).keys()];
 Array.from({ length: 100 }, (v, k) => k)
+
+
+// optional chaining
+function pointer(obj, path = []) {
+	const value = defaultValue => {
+		let val = obj;
+		while (val != null && path.length && (val = val[path.shift()]));
+		return val == null ? defaultValue : val;
+	};
+	return new Proxy(value, {
+		get(target, key) {
+			path.push(key);
+			return pointer(obj, path);
+		}
+	});
+}

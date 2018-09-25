@@ -4,43 +4,55 @@ var EventEmitter = function () {
 	function _EventEmitter() {
 		var _events = {}, _msgs = {};
 		_eventsMap.set(this, _events);
-		_msgMap.set(this, {});
+		_msgMap.set(this, _msgs);
 	}
 	_EventEmitter.prototype.addListener = function addListener(name, listener) {
-		var _events = _eventsMap.get(this);
-		var _msgs = _msgMap.get(this);
+		if (typeof listener !== 'function') {
+			throw new TypeError('listener is not a function.');
+		}
+		var _events = _eventsMap.get(this),
+			_msgs = _msgMap.get(this),
+			msgs = _msgs[name];
 		if (!_events[name]) {
 			_events[name] = [];
 		}
 		_events[name].push(listener);
-		if (_msgs[name].length) {
-		}
-		while (_msgs[name].length) {
-			var msg = _msgs[name].shift();
+		while (msgs.length) {
+			var msg = msgs.shift();
 			this.emit(name, ...msg);
 		}
 	};
 	_EventEmitter.prototype.emit = function emit(name, ...args) {
-		var _events = _eventsMap.get(this);
-		var _msgs = _msgMap.get(this);
-		if (!_events[name]) {
-			_events[name] = [];
+		var _events = _eventsMap.get(this),
+			_msgs = _msgMap.get(this),
+			evs = _events[name];
+
+		if (!evs) {
 			_msgs[name] = [];
 			_msgs[name].push(args);
 			return;
 		}
-		for (var i = 0, len = _events[name].length; i < len; ++i) {
-			_events[name][i](...args);
-		}
+		process.nextTick(() => {
+			for (var i = 0, len = evs.length; i < len; ++i) {
+				evs[i].apply(this, args);
+			}
+			if (_msgs[name]) {
+				_msgs[name] = null;
+			}
+		});
 	};
 	_EventEmitter.prototype.removeListener = function removeListener(name, listener) {
-		var _events = _eventsMap.get(this);
-		if (!_events[name]) {
+		var _events = _eventsMap.get(this),
+			evs = _events[name];
+		if (!evs) {
 			throw new Error('no such event');
 		}
-		var pos = _events[name].indexOf(listener);
+		var pos = evs.indexOf(listener);
 		if (pos !== -1) {
-			_events[name].splice(pos, 1);
+			evs.splice(pos, 1);
+		}
+		if (!evs.length) {
+			_events[name] = null;
 		}
 	};
 	return _EventEmitter;

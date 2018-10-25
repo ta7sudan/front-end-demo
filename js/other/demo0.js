@@ -239,3 +239,13 @@ function pointer(obj, path = []) {
 		}
 	});
 }
+
+// get ArrayBufferView
+// from https://stackoverflow.com/questions/21753581/check-for-an-instance-of-arraybufferview
+var ArrayBufferView = Object.getPrototypeOf(Object.getPrototypeOf(new Uint16Array)).constructor;
+function isArrayBufferView(v) {
+	return v instanceof ArrayBufferView;
+}
+function isArrayBufferView(v) {
+	return v && v.buffer instanceof ArrayBuffer && v.byteLength !== undefined;
+}

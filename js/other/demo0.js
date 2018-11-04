@@ -249,3 +249,13 @@ function isArrayBufferView(v) {
 function isArrayBufferView(v) {
 	return v && v.buffer instanceof ArrayBuffer && v.byteLength !== undefined;
 }
+
+// 统计对象中某个key的数量
+var map = {};
+// if (!map[key]) {
+// 	map[key] = 1
+// } else {
+// 	++map[key];
+// }
+// 可以写成
+map[key] = -~map[key];

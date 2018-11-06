@@ -17,6 +17,7 @@ var EventEmitter = function () {
 			_events[name] = [];
 		}
 		_events[name].push(listener);
+		if (!msgs) return;
 		while (msgs.length) {
 			var msg = msgs.shift();
 			this.emit(name, ...msg);
@@ -59,6 +60,9 @@ var EventEmitter = function () {
 }();
 
 var e = new EventEmitter();
+	e.addListener('test', function (a, b) {
+		console.log(a, b);
+	});
 e.emit('test', 1, 2);
 
 setTimeout(() => {

@@ -13,6 +13,6 @@ function debounce(fn, delay = 100, thisArg) {
 		if (handler) {
 			clearTimeout(handler);
 		}
-		handler = setTimeout(f, delay, thisArg, args);
+		handler = setTimeout(f, delay, thisArg || this, args);
 	};
 }

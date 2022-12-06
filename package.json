@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/ta7sudan/front-end-demo#readme",
   "devDependencies": {
-    "http-server": "^0.11.1",
+    "http-server": "^0.11.2",
     "oock": "^1.0.13"
   }
 }
